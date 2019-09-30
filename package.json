@@ -1,0 +1,15 @@
+{
+  "name": "contribution-graph",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "repository": "git@github.com:wangsijie/contribution-graph.git",
+  "author": "Wang Sijie <i@sijie.wang>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "canvas": "^2.6.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0"
+  }
+}
