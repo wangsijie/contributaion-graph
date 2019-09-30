@@ -1,3 +1,6 @@
+const fs = require('fs');
 const app = require('./src/app');
-const buffer = app([10,100,200,300,400,500,600]);
-require('fs').writeFileSync('output.png', buffer);
+const input = JSON.parse(fs.readFileSync('./log/1569824495015.json').toString());
+console.log(input.length);
+const buffer = app(input);
+require('fs').writeFileSync('outputs/graph.png', buffer);
