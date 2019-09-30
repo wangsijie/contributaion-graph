@@ -15,8 +15,8 @@ app.post('/', (req, res) => {
         res.status(400);
         return res.end();
     }
+    fs.writeFileSync(`log/${new Date().getTime()}.log`, data)
     const input = Array.isArray(data) ? data : data.split('\n');
-    fs.writeFileSync(`log/${new Date().getTime()}.json`, JSON.stringify(input))
     const buffer = graph(input);
     res.type('image/png');
     res.send(buffer);
