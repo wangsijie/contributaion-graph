@@ -14,7 +14,8 @@ app.post('/', (req, res) => {
         res.status(400);
         return res.end();
     }
-    const buffer = graph(data);
+    const input = Array.isArray(data) ? data : data.split('\n');
+    const buffer = graph(input);
     res.type('image/png');
     res.send(buffer);
 })
