@@ -16,11 +16,11 @@ const generateBlocks = () => {
 }
 
 module.exports = (data) => {
-    data = data.slice(0, 366).map(item => parseInt(item, 10));
+    data = data.slice(0, data.length - 1).map(item => parseInt(item, 10));
     const colors = ['#FFEE4A', '#FFC500', '#FE9602', '#952c00'];
     const sum = data.reduce((p, item) => p + item, 0);
     const average = Math.floor(sum / data.length);
-
+    
     const blocks = generateBlocks();
 
     const thred1 = average / 3 * 2;
@@ -29,7 +29,8 @@ module.exports = (data) => {
     const thred4 = average / 3 * 5;
 
     blocks.forEach((block, index) => {
-        block.value = data[index] || 0;
+        const key = data.length - blocks.length + index;
+        block.value = key >= 0 && key < data.length ? data[key] : 0;
         if (block.value >= thred1 && block.value < thred2) {
             block.color = colors[0];
         } else if (block.value >= thred2 && block.value < thred3) {
