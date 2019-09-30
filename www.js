@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const graph = require('./src/app');
 const port = process.env.PORT || 3000;
 
@@ -15,6 +16,7 @@ app.post('/', (req, res) => {
         return res.end();
     }
     const input = Array.isArray(data) ? data : data.split('\n');
+    fs.writeFileSync(`log/${new Date().getTime()}.json`, JSON.stringify(input))
     const buffer = graph(input);
     res.type('image/png');
     res.send(buffer);
