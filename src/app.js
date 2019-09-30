@@ -20,13 +20,14 @@ const generateBlocks = () => {
 module.exports = (data) => {
     const colors = ['#fb9b72', '#f27641', '#ca460f', '#952c00'];
     const max = Math.max(...data);
+    const threshold = 150;
 
     const blocks = generateBlocks();
 
     blocks.forEach((block, index) => {
         block.value = data[index] || 0;
         if (block.value) {
-            const level = Math.floor(block.value / (max / 4));
+            const level = Math.floor((block.value - threshold) / ((max - threshold) / 4));
             block.color = colors[level];
         }
     });
