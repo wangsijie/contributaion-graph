@@ -10,7 +10,6 @@ const generateBlocks = () => {
         blocks.push({
             date: moment(day),
             id: day.unix(),
-            color: '#ebedf0',
             value: 0,
         });
     }
@@ -29,6 +28,9 @@ module.exports = (data) => {
         if (block.value) {
             const level = Math.floor((block.value - threshold) / ((max - threshold) / 4));
             block.color = colors[level];
+        }
+        if (!block.color) {
+            block.color = '#ebedf0';
         }
     });
 
