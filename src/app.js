@@ -1,5 +1,4 @@
 const { createCanvas } = require('canvas');
-const fs = require('fs');
 const moment = require('moment');
 
 const generateBlocks = () => {
@@ -17,7 +16,7 @@ const generateBlocks = () => {
 }
 
 module.exports = (data) => {
-    const colors = ['#fb9b72', '#f27641', '#ca460f', '#952c00'];
+    const colors = ['#FFEE4A', '#FFC500', '#FE9602', '#952c00'];
     const max = Math.max(...data);
     const threshold = 150;
 
@@ -25,8 +24,8 @@ module.exports = (data) => {
 
     blocks.forEach((block, index) => {
         block.value = data[index] || 0;
-        if (block.value) {
-            const level = Math.floor((block.value - threshold) / ((max - threshold) / 4));
+        if (block.value > threshold) {
+            const level = Math.floor((block.value - threshold) / ((max - threshold) / 3));
             block.color = colors[level];
         }
         if (!block.color) {
